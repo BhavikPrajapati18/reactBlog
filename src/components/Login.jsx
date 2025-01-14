@@ -50,7 +50,7 @@ function Login() {
                     </Link>
         </p>
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-        <form onSubmit={handleSubmit}
+        <form onSubmit={handleSubmit(Login)}
         className=''
          ><div>
           <Input
