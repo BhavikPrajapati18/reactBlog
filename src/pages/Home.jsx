@@ -5,13 +5,12 @@ import AppwriteService from "../appwrite/config";
 function Home() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    AppwriteService.getPosts().then((posts) => {
-      if(  posts ){ 
-        setPosts(posts.documents);
-      }
-    })
-  }, [])
+  useEffect(() => {}, []);
+  AppwriteService.getPosts([]).then((posts) => {
+    if (posts) {
+      setPosts(posts.documents);
+    }
+  });
 
   if (posts.length === 0) {
     return (
@@ -26,7 +25,7 @@ function Home() {
           </div>
         </Container>
       </div>
-    )
+    );
   }
   return (
     <div className="w-full py-8">
@@ -40,7 +39,7 @@ function Home() {
         </div>
       </Container>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
