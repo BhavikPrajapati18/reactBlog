@@ -1,8 +1,38 @@
-# React + Vite
+# **Blog Webapp**  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive blogging platform where users can explore, read, and share their thoughts seamlessly.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Project Link**  
+Live Website: [Blog Webapp](https://react-blog-xi-lime.vercel.app/)  
+
+---
+
+## **Features**  
+- Elegant and responsive design.
+- User authentication for personalized experiences.   
+- Explore blogs & posts from various users.  
+- Smooth navigation between pages.  
+- Easy-to-read layout for better user experience.  
+
+---
+
+## **Technologies Used**  
+- **Frontend**: React.js  
+- **Styling**: CSS  
+- **Version Control**: Git and GitHub  
+- **Hosting**: Vercel  
+
+---
+
+## **Planned Enhancements**   
+- Implement a "Write Blog" feature for user submissions.  
+- Enable likes, comments, and sharing options for blogs.  
+- Categorize blogs for easier navigation.  
+
+---
+
+## **License**  
+**All rights reserved.**  
+Unauthorized copying, modification, distribution, or deployment of this project is strictly prohibited without explicit written permission from the author.  
