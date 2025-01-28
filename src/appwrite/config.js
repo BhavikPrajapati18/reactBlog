@@ -82,11 +82,12 @@ export class AppwriteService {
 
   async getPosts(queries = [Query.equal("status", "active")]) {
     try {
-      return await this.database.listDocuments(
+      const result = await this.database.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         queries
       );
+      return result;
     } catch (error) {
       console.log("AppwriteService -> getPosts -> error", error);
       return false;
