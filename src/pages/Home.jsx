@@ -5,12 +5,17 @@ import AppwriteService from "../appwrite/config";
 function Home() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {}, []);
-  AppwriteService.getPosts([]).then((posts) => {
-    if (posts) {
-      setPosts(posts.documents);
-    }
-  });
+  useEffect(() => {
+    AppwriteService.getPosts([])
+      .then((posts) => {
+        if (posts) {
+          setPosts(posts.documents);
+        }
+      })
+      .catch((error) => {
+        console.log("AllPosts -> error", error);
+      });
+  }, []);
 
   if (posts.length === 0) {
     return (

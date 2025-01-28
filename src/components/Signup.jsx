@@ -63,7 +63,7 @@ function Signup() {
 
             <Input
               type="email"
-              name="email"
+              label="email"
               placeholder="Email"
               {...register("email", {
                 required: true,
@@ -76,7 +76,7 @@ function Signup() {
             />
             <Input
               type="password"
-              name="password"
+              label="password"
               placeholder="Password"
               {...register("password", {
                 required: true,

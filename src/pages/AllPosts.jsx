@@ -5,12 +5,17 @@ import AppwriteService from "../appwrite/config";
 function AllPosts() {
   const [posts, setAllPosts] = useState([]);
 
-  useEffect(() => {}, []);
-  AppwriteService.getPosts([]).then((posts) => {
-    if (posts) {
-      setAllPosts(posts.documents);
-    }
-  });
+  useEffect(() => {
+    AppwriteService.getPosts([])
+      .then((posts) => {
+        if (posts) {
+          setAllPosts(posts.documents);
+        }
+      })
+      .catch((error) => {
+        console.log("AllPosts -> error", error);
+      });
+  }, []);
 
   return (
     <div className="w-full py-8">

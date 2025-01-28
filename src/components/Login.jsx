@@ -13,16 +13,19 @@ function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const Login = async (data) => {
+  const handleLogin = async (data) => {
     console.log(data);
     setError("");
     try {
       const session = await AuthService.login(data);
-
       if (session) {
         const userData = await AuthService.userAcitve();
-        if (userData) dispatch(login(userData));
-        navigate("/");
+        if (userData) {
+          dispatch(login(userData));
+          navigate("/");
+        } else {
+          console.error("User data is null. Possible expired session.");
+        }
       }
     } catch (error) {
       setError(error.message);
@@ -52,7 +55,7 @@ function Login() {
           </Link>
         </p>
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-        <form onSubmit={handleSubmit(Login)} className="">
+        <form onSubmit={handleSubmit(handleLogin)} className="">
           <div>
             <Input
               type="email"

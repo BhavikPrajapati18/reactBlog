@@ -12,13 +12,12 @@ export class AppwriteService {
       .setProject(conf.appwriteProjectId);
     this.database = new Databases(this.client);
     this.bucket = new Storage(this.client);
-
   }
 
   async createPost({ title, content, featuredImage, userId, slug }) {
     try {
       return await this.database.createDocument(
-        conf.appwriteDatabaseId ,
+        conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
         {
@@ -37,8 +36,8 @@ export class AppwriteService {
   async updatePost(slug, { title, content, featuredImage, userId, status }) {
     try {
       return await this.database.updateDocument(
-        conf.appwriteDatabaseId ,
-        conf.appwriteCollectionId ,
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
         slug,
         {
           title,
@@ -67,16 +66,17 @@ export class AppwriteService {
       return false;
     }
   }
-  
+
   async getPost(slug) {
     try {
       return await this.database.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug
-      )
+      );
     } catch (error) {
       console.log("AppwriteService -> getPost -> error", error);
+      return false;
     }
   }
 
@@ -89,10 +89,11 @@ export class AppwriteService {
       );
     } catch (error) {
       console.log("AppwriteService -> getPosts -> error", error);
+      return false;
     }
   }
 
-// File methods storage
+  // File methods storage
 
   async createFile(file) {
     try {
@@ -103,31 +104,24 @@ export class AppwriteService {
       );
     } catch (error) {
       console.log("AppwriteService -> createFile -> error", error);
-      return false
+      return false;
     }
   }
 
-  async deleteFile(fileId){
+  async deleteFile(fileId) {
     try {
-      await this.bucket.deleteFile(
-        conf.appwriteBucketId,
-        fileId
-      )
-      return true
+      await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
+      return true;
     } catch (error) {
       console.log("AppwriteService -> deleteFile -> error", error);
-      return false
+      return false;
     }
   }
 
-  getFilePreview(fileId){
-    return this.bucket.getFilePreview(
-      conf.appwriteBucketId,
-      fileId
-    )
+  getFilePreview(fileId) {
+    return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
   }
 }
-
 
 const service = new AppwriteService();
 

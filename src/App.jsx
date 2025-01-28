@@ -12,10 +12,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    authService.userAcitve()
+    const userdata = authService
+      .userAcitve()
       .then((userData) => {
         if (userData) {
-          dispatch(login({ userData }))
+          dispatch(login({ userData }));
         } else {
           dispatch(logout());
         }
@@ -24,15 +25,15 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-[#F7F3F3]'>
-      <div className='w-full block'>
+    <div className="min-h-screen flex flex-wrap content-between bg-[#F7F3F3]">
+      <div className="w-full block">
         <Header />
         <main>
-        <Outlet />
+          <Outlet />
         </main>
         <Footer />
       </div>
     </div>
-  ) : null
+  ) : null;
 }
 export default App;

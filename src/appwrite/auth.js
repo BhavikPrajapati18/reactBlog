@@ -32,24 +32,34 @@ export class AuthService {
 
   async login({ email, password }) {
     try {
-      return await this.account.createEmailPasswordSession(email, password);
+      const session = await this.account.createEmailPasswordSession(
+        email,
+        password
+      );
+      localStorage.setItem("session", JSON.stringify(session));
+      return session;
     } catch (error) {
-      console.log("Login : ", error);
+      throw error;
     }
   }
 
   async userAcitve() {
     try {
+      const storedSession = localStorage.getItem("session");
+      if (storedSession) {
+        return JSON.parse(storedSession); // ✅ Return stored session
+      }
       return await this.account.get();
     } catch (error) {
       console.log("userActive : ", error);
+      return null;
     }
-    return null;
   }
 
   async logout() {
     try {
       await this.account.deleteSessions();
+      localStorage.removeItem("session"); // ✅ Clear session on logout
     } catch (error) {
       console.log("Logout : ", error);
     }
