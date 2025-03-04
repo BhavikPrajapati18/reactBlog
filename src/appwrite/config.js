@@ -69,11 +69,13 @@ export class AppwriteService {
 
   async getPost(slug) {
     try {
-      return await this.database.getDocument(
+      const result = await this.database.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug
       );
+      console.log(result);
+      return result;
     } catch (error) {
       console.log("AppwriteService -> getPost -> error", error);
       return false;
