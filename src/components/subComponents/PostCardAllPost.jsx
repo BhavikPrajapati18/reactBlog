@@ -7,7 +7,21 @@ function stripHtml(html) {
   return doc.body.textContent || "";
 }
 
-function PostCardAllPost({ featuredImage, $id, title, content }) {
+function PostCardAllPost({
+  featuredImage,
+  $id,
+  title,
+  content,
+  username,
+  date,
+}) {
+  const formattedDate = date
+    ? new Date(date).toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+    : "Unknown Date";
   return (
     <Link to={`/post/${$id}`}>
       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.02] relative border border-gray-200">
@@ -27,6 +41,9 @@ function PostCardAllPost({ featuredImage, $id, title, content }) {
           </h1>
           <p className="text-gray-600 text-sm line-clamp-2">
             {stripHtml(content)}
+          </p>
+          <p className="text-sm text-gray-300 mt-1">
+            Posted on | {formattedDate}
           </p>
         </div>
       </div>
