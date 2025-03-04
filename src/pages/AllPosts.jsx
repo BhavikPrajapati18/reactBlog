@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, PostCards } from "../components";
+import { Container, PostCardAllPost } from "../components";
 import AppwriteService from "../appwrite/config";
 
 function AllPosts() {
@@ -18,13 +18,14 @@ function AllPosts() {
   }, []);
 
   return (
-    <div className="w-full py-8">
+    <div className="w-full py-8 mt-6 bg-gray-100">
       <Container>
-        <div className="flex flex-wrap">
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+          All Blog Posts
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <div className="p-2" key={post.$id}>
-              <PostCards {...post} />
-            </div>
+            <PostCardAllPost key={post.$id} {...post} />
           ))}
         </div>
       </Container>

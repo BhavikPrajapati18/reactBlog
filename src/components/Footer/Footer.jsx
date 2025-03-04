@@ -4,139 +4,101 @@ import Logo from "../subComponents/Logo";
 
 function Footer() {
   return (
-    <section className="relative overflow-hidden py-10 bg-[#002D3D] pb-20">
-      <div className="relative z-10 mx-auto max-w-7xl px-4">
-        <div className="-m-6 flex flex-wrap">
-          <div className="w-full p-6 md:w-1/2 lg:w-5/12">
-            <div className="flex h-full flex-col justify-between">
-              <div className="mb-4 inline-flex items-center">
-              <Logo width="50px"/>
-              </div>
-              <div>
-                <p className="text-sm text-[#F7F3F3]">
-                  &copy; Copyright 2023. All Rights Reserved by Bhavik.
-                </p>
-              </div>
-            </div>
+    <footer className="relative bg-gradient-to-r from-[#002D3D] to-[#004F5D] py-12 text-[#F7F3F3] border-t border-gray-700 shadow-lg">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo and Copyright */}
+          <div className="flex flex-col items-start">
+            <Logo width="60px" />
+            <p className="mt-4 text-sm opacity-80">
+              &copy; 2023 Bhavik. All Rights Reserved.
+            </p>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-[#F7F3F3]">
-                Company
-              </h3>
-              <ul>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Affiliate Program
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Press Kit
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
+          {/* Company Links */}
+          <div>
+            <h3 className="text-sm font-bold uppercase mb-4 border-b pb-2 border-gray-500">
+              Company
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Affiliate Program
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Press Kit
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-[#F7F3F3]">
-                Support
-              </h3>
-              <ul>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Account
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Help
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Customer Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
+          {/* Support Links */}
+          <div>
+            <h3 className="text-sm font-bold uppercase mb-4 border-b pb-2 border-gray-500">
+              Support
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Account
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Help
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Customer Support
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-3/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-[#F7F3F3]">
-                Legals
-              </h3>
-              <ul>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Terms &amp; Conditions
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className=" text-base font-medium text-[#E7DADA] hover:text-[#F7F3F3]"
-                    to="/"
-                  >
-                    Licensing
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
+          {/* Legal Links */}
+          <div>
+            <h3 className="text-sm font-bold uppercase mb-4 border-b pb-2 border-gray-500">
+              Legals
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Terms &amp; Conditions
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FFC107] transition" to="/">
+                  Licensing
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
 

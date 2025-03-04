@@ -22,7 +22,7 @@ function LogoutBtn() {
 
   return (
     <button
-      className="bg-red-500 text-white px-4 py-2 rounded-md"
+      className="bg-gradient-to-r from-red-500 to-red-700 text-white px-5 py-2 rounded-lg shadow-md hover:from-red-600 hover:to-red-800 transition-all duration-300 transform hover:scale-105"
       onClick={logoutHandler}
     >
       Logout

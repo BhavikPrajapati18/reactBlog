@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 function PostCards({ featuredImage, $id, title }) {
   return (
     <Link to={`/post/${$id}`}>
-      <div className="w-full h-full bg-[#002D3D] rounded-md p-4 my-4 relative">
-        <div className="w-full justify-center mb-4">
+      <div className="bg-[#002D3D] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 relative">
+        <div className="w-full h-60">
           <img
             src={appwriteService.getFilePreview(featuredImage)}
             alt={title}
-            className="w-full h-auto rounded-sm"
+            className="w-full h-full object-cover"
           />
         </div>
-        <h1 className="absolute bottom-4 left-4 text-xl font-bold text-[#F7F3F3]">
-          {title}
-        </h1>
+        <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4">
+          <h1 className="text-lg font-bold text-white truncate">{title}</h1>
+        </div>
       </div>
     </Link>
   );

@@ -8,10 +8,11 @@ import Input from "./subComponents/Input";
 import RTE from "./subComponents/RTE";
 import Selector from "./subComponents/Selector";
 import Signup from "./Signup";
-import Login from "./Login"
+import Login from "./Login";
 import PostForm from "./postForm/PostForm";
-import PostCards from "./subComponents/PostCards"
-import AuthLayout from "./AuthLayout"
+import PostCards from "./subComponents/PostCards";
+import AuthLayout from "./AuthLayout";
+import PostCardAllPost from "./subComponents/PostCardAllPost";
 
 export {
   Header,
@@ -27,5 +28,6 @@ export {
   Login,
   PostCards,
   PostForm,
-  AuthLayout
+  AuthLayout,
+  PostCardAllPost,
 };
