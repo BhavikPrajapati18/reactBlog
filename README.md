@@ -19,8 +19,9 @@ Live Website: [Blog Webapp](https://react-blog-xi-lime.vercel.app/)
 ---
 
 ## **Technologies Used**  
-- **Frontend**: React.js  
-- **Styling**: CSS  
+- **Frontend**: React.js
+- **Backend**: Appwrite  
+- **Styling**: Tailwind CSS  
 - **Version Control**: Git and GitHub  
 - **Hosting**: Vercel  
 
