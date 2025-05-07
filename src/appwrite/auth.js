@@ -64,6 +64,10 @@ export class AuthService {
       console.log("Logout : ", error);
     }
   }
+
+  getCurrentUser() {
+    return this.account.get(); // ✅ For Home.jsx user check
+  }
 }
 
 const authService = new AuthService();
