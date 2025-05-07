@@ -1,54 +1,55 @@
-import React from 'react'
-import {Controller} from 'react-hook-form'
-import {Editor} from '@tinymce/tinymce-react';
+import React from "react";
+import { Controller } from "react-hook-form";
+import { Editor } from "@tinymce/tinymce-react";
 
-function RTE({label , name , control, defaultValue = ""}) {
+function RTE({ label, name, control, defaultValue = "" }) {
   return (
     <div>
-      {label && <label className='inline-block mb-1 pl-1'>{label}</label>}
+      {label && <label className="inline-block mb-1 pl-1">{label}</label>}
       <Controller
-        name = {name || "Content"}
-        control = {control}
-        render ={ ({field: {onChange}}) => (
+        name={name || "Content"}
+        control={control}
+        render={({ field: { onChange } }) => (
           <Editor
-          apiKey='mtcnmp5ef7whcotnguxk85auu8ckda17v6caa6ctqo0co42j'
-          initialValue={defaultValue}
-          init={{
+            apiKey="mtcnmp5ef7whcotnguxk85auu8ckda17v6caa6ctqo0co42j"
+            initialValue={defaultValue}
+            init={{
               initialValue: defaultValue,
               height: 500,
               menubar: true,
               plugins: [
-                  "image",
-                  "advlist",
-                  "autolink",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "code",
-                  "fullscreen",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "code",
-                  "help",
-                  "wordcount",
-                  "anchor",
+                "image",
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "fullscreen",
+                "insertdatetime",
+                "media",
+                "table",
+                "code",
+                "help",
+                "wordcount",
+                "anchor",
               ],
               toolbar:
-              "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
-              content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
-          }}
-          onEditorChange={onChange}
+                "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
+              content_style:
+                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+            }}
+            onEditorChange={onChange}
           />
-      )}
+        )}
       />
     </div>
-  )
+  );
 }
 
-export default RTE
+export default RTE;

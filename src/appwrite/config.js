@@ -16,17 +16,20 @@ export class AppwriteService {
 
   async createPost({ title, content, featuredImage, userId, slug }) {
     try {
-      return await this.database.createDocument(
+      console.log(title, content, featuredImage, userId, slug);
+      const document = await this.database.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug,
+        ID.unique(), // Generate a unique ID if slug is not unique
         {
           title,
           content,
           featuredImage,
           userId,
+          slug,
         }
       );
+      return document;
     } catch (error) {
       console.log("AppwriteService -> createPost -> error", error);
       throw error;
@@ -35,7 +38,7 @@ export class AppwriteService {
 
   async updatePost(slug, { title, content, featuredImage, userId, status }) {
     try {
-      return await this.database.updateDocument(
+      const document = await this.database.updateDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
@@ -47,8 +50,9 @@ export class AppwriteService {
           status,
         }
       );
+      return document;
     } catch (error) {
-      console.log("AppwriteService -> deletePost -> error", error);
+      console.log("AppwriteService -> updatePost -> error", error);
       throw error;
     }
   }
@@ -74,7 +78,6 @@ export class AppwriteService {
         conf.appwriteCollectionId,
         slug
       );
-      console.log(result);
       return result;
     } catch (error) {
       console.log("AppwriteService -> getPost -> error", error);
@@ -97,7 +100,6 @@ export class AppwriteService {
   }
 
   // File methods storage
-
   async createFile(file) {
     try {
       return await this.bucket.createFile(

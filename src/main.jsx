@@ -17,11 +17,11 @@ import AddPost from "./pages/AddPost.jsx";
 import Home from "./pages/Home.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import Post from "./pages/Post.jsx";
+import Daigram from "./pages/daigram.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      
       <Route path="/" element={<Home />} />
       <Route
         path="/login"
@@ -63,12 +63,8 @@ const router = createBrowserRouter(
           </AuthLayout>
         }
       />
-      <Route
-        path="/post/:slug"
-        element={
-            <Post />
-        }
-      />
+      <Route path="/daigram" element={<Daigram />} />
+      <Route path="/post/:slug" element={<Post />} />
     </Route>
   )
 );
