@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Selector, RTE, Input } from "../index";
 import { useNavigate } from "react-router-dom";
@@ -18,36 +18,50 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const [uploading, setUploading] = useState(false); // loader state
 
   const submit = async (data) => {
-    if (post) {
-      const file = data.image[0]
-        ? await appwriteService.createFile(data.image[0])
-        : null;
-      if (file) {
-        appwriteService.deleteFile(post.featuredImage);
-      }
-      const dbPost = await appwriteService.updatePost(post.$id, {
-        ...data,
-        featuredImage: file ? file.$id : undefined,
-      });
-      if (dbPost) {
-        navigate(`/post/${dbPost.$id}`);
-      }
-    } else {
-      const file = data.image[0]
-        ? await appwriteService.createFile(data.image[0])
-        : null;
-      if (file) {
-        data.featuredImage = file.$id;
-        const dbPost = await appwriteService.createPost({
+    setUploading(true); // start loader
+    try {
+      if (post) {
+        const file = data.image[0]
+          ? await appwriteService.createFile(data.image[0])
+          : null;
+
+        if (file) {
+          await appwriteService.deleteFile(post.featuredImage);
+        }
+
+        const dbPost = await appwriteService.updatePost(post.$id, {
           ...data,
-          userId: userData.$id,
+          featuredImage: file ? file.$id : undefined,
         });
+
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
         }
+      } else {
+        const file = data.image[0]
+          ? await appwriteService.createFile(data.image[0])
+          : null;
+
+        if (file) {
+          data.featuredImage = file.$id;
+
+          const dbPost = await appwriteService.createPost({
+            ...data,
+            userId: userData.$id,
+          });
+
+          if (dbPost) {
+            navigate(`/post/${dbPost.$id}`);
+          }
+        }
       }
+    } catch (error) {
+      console.error("Error while uploading image or submitting post:", error);
+    } finally {
+      setUploading(false); // stop loader
     }
   };
 
@@ -113,23 +127,36 @@ export default function PostForm({ post }) {
             {...register("status", { required: true })}
           />
         </div>
+
         {/* Right Column - File Upload & Preview */}
         <div className="space-y-6">
           <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-8">
-            <input
-              type="file"
-              className="hidden"
-              id="image-upload"
-              accept="image/png, image/jpg, image/jpeg, image/gif"
-              {...register("image", { required: !post })}
-            />
-            <label
-              htmlFor="image-upload"
-              className="cursor-pointer text-lg bg-blue-600 text-white px-6 py-3 rounded-full shadow-md transition-all hover:bg-blue-700"
-            >
-              Upload Image
-            </label>
+            {uploading ? (
+              <div className="flex items-center justify-center space-x-3">
+                <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-blue-600 font-semibold">
+                  Uploading...
+                </span>
+              </div>
+            ) : (
+              <>
+                <input
+                  type="file"
+                  className="hidden"
+                  id="image-upload"
+                  accept="image/png, image/jpg, image/jpeg, image/gif"
+                  {...register("image", { required: !post })}
+                />
+                <label
+                  htmlFor="image-upload"
+                  className="cursor-pointer text-lg bg-blue-600 text-white px-6 py-3 rounded-full shadow-md transition-all hover:bg-blue-700"
+                >
+                  Upload Image
+                </label>
+              </>
+            )}
           </div>
+
           {post && (
             <div className="rounded-xl overflow-hidden shadow-md border border-gray-200">
               <img
@@ -141,6 +168,7 @@ export default function PostForm({ post }) {
           )}
         </div>
       </div>
+
       <div>
         <Button
           type="submit"
